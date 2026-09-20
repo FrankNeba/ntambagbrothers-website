@@ -1,0 +1,235 @@
+{
+  "siteConfig": {
+    "name": "Ntambag Brothers CIG",
+    "tagline": "Empowering Children and Communities in Cameroon",
+    "description": "Ntambag Brothers Common Initiative Group (CIG) is a nonprofit community organization in Bamenda, North West Region of Cameroon dedicated to youth empowerment, education, healthcare, and social development.",
+    "phone": "+237 672 007 202",
+    "email": "infos@ntambagbrothers.org",
+    "address": "Ntambag quarter, Old Town, Bamenda, North West Region, Cameroon",
+    "registration": "Reg No: NW/GP/001/18/14870",
+    "logo": "/assets/logo-BBZA-lAV.png"
+  },
+  "stats": [
+    { "id": "1", "label": "Children Supported", "value": "500+", "icon": "GraduationCap" },
+    { "id": "2", "label": "Years of Impact", "value": "15+", "icon": "Award" },
+    { "id": "3", "label": "Community Projects", "value": "25+", "icon": "HeartHandshake" },
+    { "id": "4", "label": "Active Members", "value": "40+", "icon": "Users" }
+  ],
+  "heroSlides": [
+    {
+      "id": "1",
+      "title": "Building Stronger Communities Together",
+      "subtitle": "Supporting underprivileged children, youth, and families through education, sports, and health initiatives in Bamenda, Cameroon.",
+      "image": "/assets/bts-group-XV_NaYNH.jpg",
+      "ctaText": "Our Programs",
+      "ctaLink": "/programs"
+    },
+    {
+      "id": "2",
+      "title": "Empowering Youth Through Education",
+      "subtitle": "Providing essential school supplies, scholarships, and academic support to ensure every child reaches their full potential.",
+      "image": "/assets/community-supplies-distribution-BIb2PUkH.png",
+      "ctaText": "Get Involved",
+      "ctaLink": "/get-involved"
+    },
+    {
+      "id": "3",
+      "title": "Healthcare & Community Outreach",
+      "subtitle": "Partnering with global and local health organizations to offer medical screening, blood tests, and health education.",
+      "image": "/assets/health-campaign-otfa-DhKmlUQe.png",
+      "ctaText": "Contact Us",
+      "ctaLink": "/contact"
+    }
+  ],
+  "programs": [
+    {
+      "id": "edu-supplies",
+      "title": "Back-to-School Support & Education",
+      "category": "Education",
+      "summary": "Providing textbooks, writing materials, bags, and tuition assistance to vulnerable children and orphans in Bamenda.",
+      "description": "Every academic year, Ntambag Brothers CIG organizes back-to-school support ceremonies to ensure children affected by socio-economic challenges continue their education without disruption. We distribute exercise books, pens, school uniforms, and offer fee assistance.",
+      "image": "/assets/school-project-books-DOXTTuUi.png",
+      "impact": "Over 500 children provided with learning materials across multiple academic years."
+    },
+    {
+      "id": "health-outreach",
+      "title": "Community Health & Screening Campaigns",
+      "category": "Healthcare",
+      "summary": "Free medical checkups, blood sugar & pressure screenings, health consultation in partnership with OTFA and medical professionals.",
+      "description": "In collaboration with Old Town For America (OTFA) and local health personnel, we conduct community healthcare outreach campaigns in Bamenda, serving hundreds of residents with free diagnostic tests, medicines, and preventive health education.",
+      "image": "/assets/health-screening-BPWwGiKE.jpg",
+      "impact": "More than 1,000 residents screened and provided with health counseling and medicine."
+    },
+    {
+      "id": "idp-relief",
+      "title": "IDP & Vulnerable Family Relief",
+      "category": "Social Relief",
+      "summary": "Food items, warm clothing, hygiene products, and emergency relief for internally displaced persons.",
+      "description": "Providing humanitarian relief, food packages, blankets, and essential household items to internally displaced families residing in Ntambag quarter and surrounding Bamenda communities.",
+      "image": "/assets/idp-support-DxPg1q7V.png",
+      "impact": "Direct relief provided to 200+ displaced families."
+    },
+    {
+      "id": "youth-sports",
+      "title": "Youth Football & Talent Development",
+      "category": "Sports & Youth",
+      "summary": "Organizing holiday football tournaments and youth athletic programs to foster unity, discipline, and healthy living.",
+      "description": "Sports serve as a powerful tool for social cohesion. Ntambag Brothers CIG hosts annual youth football tournaments, equipping teams with jerseys, footballs, and awards to keep youth positively engaged during holiday periods.",
+      "image": "/assets/football-team-1Eie4oQS.png",
+      "impact": "Engaged over 300 youth players across regional holiday competitions."
+    }
+  ],
+  "teamMembers": [
+    {
+      "id": "1",
+      "name": "Bobga Valentine Tita",
+      "role": "President",
+      "bio": "Elected December 2024, bringing 17 years of experience as Minutes Secretary. Committed to continuing humanitarian activities and serving the Ntambag community.",
+      "image": "/assets/president-bobga-tita-enhanced-C3b4ZPnr.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Prof. Mbanga Laurence Akei",
+      "role": "Vice President",
+      "bio": "Distinguished academic and community leader elected alongside President Tita to help guide the organization into its new era.",
+      "image": "/assets/vp-mbanga-CnnOcwXG.jpg"
+    },
+    {
+      "id": "3",
+      "name": "Dr. Ernest Dzelamonyuy",
+      "role": "Secretary General",
+      "bio": "Coordinates the overall administration of the organization, ensuring strategic alignment and effective execution of programs.",
+      "image": "/assets/secgen-dzelamonyuy-C7Ht5_Fc.jpg"
+    },
+    {
+      "id": "4",
+      "name": "Ndimbu Polycarp",
+      "role": "Immediate Past President",
+      "bio": "Led Ntambag Brothers CIG through years of growth and impact, now serving as advisor and mentor to the new leadership.",
+      "image": "/assets/bts-group-XV_NaYNH.jpg"
+    },
+    {
+      "id": "5",
+      "name": "Bar. Aloysius Fokou",
+      "role": "Adviser & Legal Officer",
+      "bio": "Provides legal counsel and strategic advisory support to the organization, ensuring sound governance and compliance.",
+      "image": "/assets/adviser-fouko-WyEAozAc.jpg"
+    },
+    {
+      "id": "6",
+      "name": "Vitalis Wiyfofe",
+      "role": "Secretary",
+      "bio": "Handles organizational records, correspondence, and administrative duties to keep Ntambag Brothers running smoothly.",
+      "image": "/assets/secretary-wiyfife-XjkuBiaa.jpg"
+    },
+    {
+      "id": "7",
+      "name": "Nchotu Harrison",
+      "role": "Treasurer",
+      "bio": "Manages the organization's finances with transparency and accountability, ensuring funds are directed to maximum community impact.",
+      "image": "/assets/treasurer-nchatu-sP0_3u2A.jpg"
+    },
+    {
+      "id": "8",
+      "name": "Mawo Pascal",
+      "role": "Publicity Secretary",
+      "bio": "Leads communications and public relations efforts, raising awareness of the organization's mission and impact across the community.",
+      "image": "/assets/publicity-mawo-CyPsP6Fn.jpg"
+    },
+    {
+      "id": "9",
+      "name": "Beng Linus (Bobo Leennox)",
+      "role": "Financial Secretary",
+      "bio": "Oversees financial record-keeping and reporting, ensuring accurate documentation of all organizational transactions.",
+      "image": "/assets/financial-sec-beng-Xnig_nOJ.jpg"
+    },
+    {
+      "id": "10",
+      "name": "Elise Nagwa Bamedig",
+      "role": "Matron",
+      "bio": "Serves as the organization's matron, providing guidance and maternal support to beneficiaries and community programs.",
+      "image": "/assets/matron-elise-nagwa-Du2b6FpH.jpg"
+    },
+    {
+      "id": "11",
+      "name": "Marie Clair Komtangi",
+      "role": "Matron",
+      "bio": "Serves as the organization's matron, providing guidance and maternal support to beneficiaries and community programs.",
+      "image": "/assets/metron-komtangi-C8FJ9lsr.jpg"
+    },
+    {
+      "id": "12",
+      "name": "Don Roger",
+      "role": "Education / School Committee Chair",
+      "bio": "Leads the education and school committee, driving scholarship programs and academic initiatives that empower youth in the community.",
+      "image": "/assets/education-don-roger-DIjkdTPQ.jpg"
+    },
+    {
+      "id": "13",
+      "name": "Christian Emeka",
+      "role": "Chief Whip",
+      "bio": "Ensures discipline and orderly conduct within the organization, fostering unity and adherence to the group's principles.",
+      "image": "/assets/chief-whip-emeka-Dc5hJVx4.jpg"
+    },
+    {
+      "id": "14",
+      "name": "Mobit Victor",
+      "role": "Socials",
+      "bio": "Coordinates social events and activities, strengthening bonds among members and fostering community engagement.",
+      "image": "/assets/socials-mobit-victor-BG9CFzRt.jpg"
+    }
+  ],
+  "news": [
+    {
+      "id": "news-1",
+      "title": "Annual Back-to-School Distribution 2024 Successful",
+      "date": "September 15, 2024",
+      "category": "Education",
+      "summary": "Dozens of children in Bamenda received textbooks, backpacks, and financial assistance ahead of the new academic year.",
+      "content": "Ntambag Brothers CIG held its annual Back-to-School supply distribution at the community center in Old Town, Bamenda. Over 100 students received essential learning tools to prepare them for academic success.",
+      "image": "/assets/bts-supplies-C4O45Rhf.jpg"
+    },
+    {
+      "id": "news-2",
+      "title": "Health Campaign Partnership with OTFA",
+      "date": "August 20, 2024",
+      "category": "Healthcare",
+      "summary": "Free diagnostic medical screening and consultation provided to community members in Ntambag.",
+      "content": "In partnership with Old Town For America (OTFA), Ntambag Brothers CIG hosted a 2-day free medical camp. Doctors and nurses conducted screenings for blood pressure, blood glucose, and malaria.",
+      "image": "/assets/health-campaign-otfa-DhKmlUQe.png"
+    },
+    {
+      "id": "news-3",
+      "title": "New Year Community Fellowship & Support 2025",
+      "date": "January 5, 2025",
+      "category": "Community",
+      "summary": "Members and community elders gather to share food, goodwill, and plan emergency relief projects for the year.",
+      "content": "The executive board and general assembly hosted a celebration and fellowship meal for elderly residents and vulnerable families in Ntambag quarter.",
+      "image": "/assets/new-year-meal-2025-DtYu9c4a.png"
+    }
+  ],
+  "recognitions": [
+    {
+      "id": "rec-1",
+      "title": "Academic Research Recognition by Dr. Jude Fokwang",
+      "description": "Featured in peer-reviewed academic research on community self-help organizations and youth CIGs in North West Cameroon.",
+      "source": "Africa Insight, Vol. 37 (3), September 2007",
+      "image": "/assets/book-cover-front-Bb5LspoH.png"
+    },
+    {
+      "id": "rec-2",
+      "title": "Media Coverage by Abakwa Natal TV",
+      "description": "Featured television coverage highlighting our health campaign in partnership with Old Town For America.",
+      "source": "Abakwa Natal TV Broadcast",
+      "image": "/assets/health-center-flyer-D6C-KlX8.png"
+    }
+  ],
+  "gallery": [
+    { "id": "g1", "title": "Prize Award Ceremony 2011", "category": "Education", "image": "/assets/prize-award-2011-group-jQId7Z-l.png" },
+    { "id": "g2", "title": "Books & Supply Handover", "category": "Education", "image": "/assets/prize-award-2011-books-DE9qdQHd.png" },
+    { "id": "g3", "title": "Community Health Outreach", "category": "Health", "image": "/assets/health-outreach-DSBJgBdR.jpg" },
+    { "id": "g4", "title": "Medical Screening Room", "category": "Health", "image": "/assets/health-room-ixC0K5cZ.jpg" },
+    { "id": "g5", "title": "Youth Sports Football", "category": "Sports", "image": "/assets/sports-football-kFEJi0aZ.jpg" },
+    { "id": "g6", "title": "Christmas Community Meal", "category": "Events", "image": "/assets/christmas-2023-BzZPmUSy.png" }
+  ]
+}
