@@ -1,225 +1,291 @@
-import { getSiteData } from '@/lib/db';
-import Link from 'next/link';
-import { ArrowRight, CheckCircle, GraduationCap, Heart, Activity, Users, BookOpen, Award, Shield, Calendar as CalendarIcon } from 'lucide-react';
+'use client';
 
-export const revalidate = 0;
+import React from 'react';
+import Link from 'next/link';
+import {
+  GraduationCap,
+  BookOpen,
+  Stethoscope,
+  Lightbulb,
+  Heart,
+  Calendar,
+  ArrowRight,
+  CheckCircle2,
+} from 'lucide-react';
+import { SectionHeader, CtaSection } from '@/components/SharedUI';
 
 export default function ProgramsPage() {
-  const data = getSiteData();
-
-  const sixPillars = [
+  const programs = [
     {
       icon: GraduationCap,
-      title: "Education Sponsorship",
-      description: "Direct tuition fee payments and academic sponsorship for orphans and vulnerable children in Bamenda.",
-      color: "blue"
+      title: 'Education Sponsorship',
+      shortDescription:
+        'Providing scholarships and school fees for underprivileged children.',
+      fullDescription:
+        'Our flagship program provides full or partial scholarships to children from families who cannot afford school fees. We cover tuition, examination fees, and registration costs to ensure continuous education.',
+      impact: [
+        '85 children currently enrolled in sponsored schools',
+        '95% school completion rate among sponsored students',
+        '35 students graduated to secondary school in 2025',
+      ],
+      features: [
+        'Full tuition coverage for qualifying students',
+        'Examination fees and registration support',
+        'Regular progress monitoring and reporting',
+        'Parent/guardian counseling and engagement',
+      ],
+      image: '/assets/bts-group-XV_NaYNH.jpg',
     },
     {
       icon: BookOpen,
-      title: "School Supplies Support",
-      description: "Annual distribution of textbooks, writing materials, bags, and uniforms ahead of every academic year.",
-      color: "amber"
+      title: 'School Supplies Support',
+      shortDescription:
+        'Equipping students with essential learning materials.',
+      fullDescription:
+        'We distribute school supplies, uniforms, and learning materials to ensure every child has the tools they need to succeed in school. Our supply kits are customized based on each student\'s grade level and specific needs.',
+      impact: [
+        '500+ supply kits distributed annually',
+        '150 uniforms provided to students in need',
+        '200 backpacks filled with books and stationery',
+      ],
+      features: [
+        'Grade-appropriate textbooks and workbooks',
+        'School uniforms and shoes',
+        'Backpacks, stationery, and geometry sets',
+        'Annual back-to-school supply drives',
+      ],
+      image: '/assets/bts-supplies-C4O45Rhf.jpg',
     },
     {
-      icon: Activity,
-      title: "Health Campaigns",
-      description: "Free medical checkups, diabetes screenings, and health consultations in partnership with OTFA.",
-      color: "emerald"
+      icon: Stethoscope,
+      title: 'Health Campaigns',
+      shortDescription:
+        'Free health screenings and community health education.',
+      fullDescription:
+        'In partnership with local health professionals and OTFA, we organize community health campaigns offering free screenings for conditions like hypertension and diabetes, along with health education and awareness programs.',
+      impact: [
+        '100+ community members screened per campaign',
+        'Free blood pressure and glucose testing',
+        'Early detection of health conditions for many',
+      ],
+      features: [
+        'Free blood pressure screening',
+        'Blood glucose (diabetes) testing',
+        'Health education and awareness',
+        'Referrals to healthcare facilities',
+      ],
+      image: '/assets/health-screening-BPWwGiKE.jpg',
     },
     {
-      icon: Users,
-      title: "Youth Mentorship",
-      description: "Connecting young people with career guidance, mentorship, and leadership development workshops.",
-      color: "purple"
+      icon: Lightbulb,
+      title: 'Youth Mentorship',
+      shortDescription: 'Connecting young people with experienced mentors.',
+      fullDescription:
+        'Our mentorship program pairs young people with volunteer mentors who provide guidance on education, career choices, life skills, and personal development. Mentors meet regularly with their mentees and support them through challenges.',
+      impact: [
+        '40 active mentor-mentee pairs',
+        'Monthly group mentorship sessions',
+        '15 mentees secured internships or jobs in 2025',
+      ],
+      features: [
+        'One-on-one mentorship matching',
+        'Career guidance and goal setting',
+        'Life skills and personal development',
+        'Access to networking opportunities',
+      ],
+      image: '/assets/health-outreach-DSBJgBdR.jpg',
     },
     {
       icon: Heart,
-      title: "Community Outreach",
-      description: "Humanitarian relief packages, food items, and support for internally displaced persons (IDPs) and elderly.",
-      color: "rose"
+      title: 'Community Outreach',
+      shortDescription: 'Supporting families and neighborhoods in need.',
+      fullDescription:
+        'We organize community outreach events that address various needs including health awareness, family support, food distribution, and social welfare. Our outreach programs reach vulnerable families across multiple neighborhoods in Bamenda.',
+      impact: [
+        '12 community outreach events per year',
+        '300+ families reached through outreach programs',
+        '2 health awareness campaigns conducted',
+      ],
+      features: [
+        'Home visits to vulnerable families',
+        'Health and hygiene awareness programs',
+        'Food and essential item distribution',
+        'Community mobilization and engagement',
+      ],
+      image: '/assets/health-room-ixC0K5cZ.jpg',
     },
     {
-      icon: CalendarIcon,
-      title: "Events & Workshops",
-      description: "Strategic community workshops, revamping assemblies, and holiday sports tournaments for youth.",
-      color: "orange"
-    }
+      icon: Calendar,
+      title: 'Events & Workshops',
+      shortDescription: 'Educational events and skills-building workshops.',
+      fullDescription:
+        'We organize regular workshops, seminars, and special events that bring the community together for learning, celebration, and growth. These events cover topics ranging from academic support to vocational skills.',
+      impact: [
+        '8 major events hosted annually',
+        'Average attendance of 100+ per event',
+        '5 skills workshops for youth in 2025',
+      ],
+      features: [
+        'Back-to-school celebrations',
+        'Holiday gift drives and parties',
+        'Skills training workshops (computer literacy, crafts)',
+        'Academic support and tutoring sessions',
+      ],
+      image: '/assets/health-blood-test-FtD6RYkL.jpg',
+    },
   ];
-
-  const programDeepDives = [
-    {
-      id: "edu-sponsorship",
-      title: "Education Sponsorship & Support",
-      category: "Education",
-      description: "Every academic year, Ntambag Brothers CIG organizes back-to-school support ceremonies to ensure children affected by socio-economic challenges continue their education without disruption. We distribute exercise books, pens, school uniforms, and offer tuition fee assistance to top performing yet vulnerable students.",
-      impact: "Over 150+ children provided with learning materials and tuition support across multiple academic years.",
-      deliverables: ["Textbooks & writing kits", "School uniform distribution", "Tuition fee subsidies", "Academic progress monitoring"],
-      image: "/assets/school-project-books-DOXTTuUi.png"
-    },
-    {
-      id: "health-outreach",
-      title: "Community Health & Screening Campaigns",
-      category: "Healthcare",
-      description: "In collaboration with Old Town For America (OTFA) and local health personnel, we conduct free community healthcare outreach campaigns in Bamenda, serving hundreds of residents with free diagnostic tests, medicines, and preventive health education for diabetes and hypertension.",
-      impact: "More than 1,000 residents screened and provided with free health counseling and medications.",
-      deliverables: ["Blood glucose testing", "Blood pressure screening", "Free medication distribution", "Health education counseling"],
-      image: "/assets/health-screening-BPWwGiKE.jpg"
-    },
-    {
-      id: "idp-relief",
-      title: "IDP & Vulnerable Family Relief",
-      category: "Social Relief",
-      description: "Providing humanitarian relief, food packages, blankets, hygiene kits, and essential household items to internally displaced families (IDPs) residing in Ntambag quarter and surrounding Bamenda communities.",
-      impact: "Direct emergency relief provided to 200+ displaced families and elderly residents.",
-      deliverables: ["Emergency food baskets", "Warm clothing & blankets", "Hygiene & sanitation kits", "Micro-grant assistance"],
-      image: "/assets/idp-support-DxPg1q7V.png"
-    },
-    {
-      id: "youth-sports",
-      title: "Youth Football & Holiday Sports",
-      category: "Sports & Youth",
-      description: "Sports serve as a powerful tool for social cohesion. Ntambag Brothers CIG hosts annual youth football tournaments, equipping teams with jerseys, footballs, and trophy awards to keep youth positively engaged during holiday periods.",
-      impact: "Engaged over 300 youth players across regional holiday competitions in Bamenda.",
-      deliverables: ["Holiday football tournaments", "Sports gear & jersey donations", "Trophies & awards", "Youth leadership mentoring"],
-      image: "/assets/football-team-1Eie4oQS.png"
-    }
-  ];
-
-  const colorMap: Record<string, string> = {
-    blue: "bg-blue-50 text-blue-600 border-blue-100",
-    amber: "bg-amber-50 text-amber-600 border-amber-100",
-    emerald: "bg-emerald-50 text-emerald-600 border-emerald-100",
-    purple: "bg-purple-50 text-purple-600 border-purple-100",
-    rose: "bg-rose-50 text-rose-600 border-rose-100",
-    orange: "bg-orange-50 text-orange-600 border-orange-100"
-  };
 
   return (
-    <div className="space-y-16 py-12">
-      {/* Banner */}
-      <section className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 text-white py-16 border-b-4 border-amber-500">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-4 text-center">
-          <span className="text-amber-300 font-bold text-xs uppercase tracking-widest bg-amber-500/20 px-3 py-1 rounded-full border border-amber-500/40">
-            What We Do
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-extrabold">Programs That Transform Lives</h1>
-          <p className="text-blue-100 text-base sm:text-lg max-w-3xl mx-auto">
-            Empowering children, improving community health, and supporting vulnerable families across Old Town Bamenda and the North West Region.
-          </p>
+    <div>
+      {/* Hero Header */}
+      <section className="relative py-24 bg-primary">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl">
+            <span className="inline-block px-4 py-2 rounded-full bg-secondary/20 text-secondary font-semibold text-sm mb-6">
+              Our Programs
+            </span>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
+              Programs That Transform Lives
+            </h1>
+            <p className="text-xl text-primary-foreground/90 leading-relaxed">
+              Discover the initiatives that are making a real difference in the
+              lives of children and communities across Bamenda, Cameroon.
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Six Pillars of Impact Grid */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 space-y-10">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <span className="text-blue-700 font-bold text-xs uppercase tracking-widest bg-blue-50 px-3 py-1 rounded-full border border-blue-100">
-            Six Pillars of Impact
-          </span>
-          <h2 className="text-3xl font-extrabold text-gray-900">Comprehensive Community Support</h2>
-          <p className="text-gray-600 text-sm">Our programs cover key pillars of sustainable human and community development.</p>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {sixPillars.map((pillar, idx) => {
-            const Icon = pillar.icon;
-            return (
-              <div key={idx} className="bg-white rounded-2xl border border-gray-200 shadow-md p-6 space-y-4 hover:shadow-lg transition-all group">
-                <div className={`inline-flex p-3 rounded-xl border ${colorMap[pillar.color]}`}>
-                  <Icon className="w-6 h-6" />
+      {/* Six Pillars of Impact */}
+      <section className="py-20 bg-background">
+        <div className="container mx-auto px-4">
+          <SectionHeader
+            badge="What We Offer"
+            title="Six Pillars of Impact"
+            description="Our programs work together to address the holistic needs of children, youth, and families in our community."
+          />
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {programs.map((program, index) => {
+              const Icon = program.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-muted rounded-2xl p-6 hover:shadow-lg transition-all group cursor-pointer"
+                >
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-7 h-7 text-primary" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-foreground mb-2 group-hover:text-primary transition-colors">
+                    {program.title}
+                  </h3>
+                  <p className="text-muted-foreground text-sm mb-4">
+                    {program.shortDescription}
+                  </p>
+                  <a
+                    href={`#${program.title.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="text-primary font-medium text-sm flex items-center gap-1 group-hover:gap-2 transition-all"
+                  >
+                    Learn More <ArrowRight className="w-4 h-4" />
+                  </a>
                 </div>
-                <div className="space-y-2">
-                  <h3 className="font-bold text-gray-900 text-lg group-hover:text-blue-600 transition-colors">{pillar.title}</h3>
-                  <p className="text-gray-600 text-sm leading-relaxed">{pillar.description}</p>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </div>
         </div>
       </section>
 
       {/* Program Deep Dives */}
-      <section className="bg-slate-50 py-16 border-y border-gray-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-8 space-y-16">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <span className="text-blue-700 font-bold text-xs uppercase tracking-widest bg-blue-100 px-3 py-1 rounded-full">
-              In-Depth Initiatives
-            </span>
-            <h2 className="text-3xl font-extrabold text-gray-900">Featured Program Initiatives</h2>
-          </div>
+      {programs.map((program, index) => {
+        const Icon = program.icon;
+        const isOdd = index % 2 === 1;
+        const sectionId = program.title.toLowerCase().replace(/\s+/g, '-');
 
-          {programDeepDives.map((program, index) => (
-            <div 
-              key={program.id} 
-              className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center bg-white p-8 rounded-3xl border border-gray-200 shadow-md ${
-                index % 2 === 1 ? 'lg:flex-row-reverse' : ''
-              }`}
-            >
-              <div className={`space-y-5 ${index % 2 === 1 ? 'lg:order-2' : ''}`}>
-                <span className="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
-                  {program.category}
-                </span>
-                <h2 className="text-3xl font-extrabold text-gray-900">{program.title}</h2>
-                <p className="text-gray-600 leading-relaxed text-sm">{program.description}</p>
-                
-                {/* Deliverables checklist */}
-                <div className="space-y-2 pt-1">
-                  <span className="text-xs font-bold uppercase text-gray-700 tracking-wider block">Key Deliverables:</span>
-                  <div className="grid grid-cols-2 gap-2">
-                    {program.deliverables.map((item, i) => (
-                      <div key={i} className="flex items-center gap-2 text-xs text-gray-700">
-                        <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
-                        <span>{item}</span>
-                      </div>
-                    ))}
+        return (
+          <section
+            key={index}
+            id={sectionId}
+            className={`py-20 ${index % 2 === 0 ? 'bg-muted' : 'bg-background'}`}
+          >
+            <div className="container mx-auto px-4">
+              <div
+                className={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center ${
+                  isOdd ? 'lg:grid-flow-dense' : ''
+                }`}
+              >
+                <div className={isOdd ? 'lg:col-start-2' : ''}>
+                  <div className="rounded-3xl overflow-hidden shadow-xl">
+                    <img
+                      src={program.image}
+                      alt={program.title}
+                      className="w-full h-80 object-cover"
+                    />
                   </div>
                 </div>
-
-                <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl space-y-1 mt-3">
-                  <span className="text-xs font-bold uppercase text-amber-800 tracking-wider">Proven Impact</span>
-                  <p className="text-sm font-semibold text-gray-900">{program.impact}</p>
-                </div>
-
-                <div className="pt-2">
+                <div className={isOdd ? 'lg:col-start-1' : ''}>
+                  <div className="flex items-center gap-4 mb-6">
+                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center">
+                      <Icon className="w-7 h-7 text-primary" />
+                    </div>
+                    <h2 className="text-3xl font-bold text-foreground">
+                      {program.title}
+                    </h2>
+                  </div>
+                  <p className="text-muted-foreground mb-6 leading-relaxed">
+                    {program.fullDescription}
+                  </p>
+                  <div className="mb-6">
+                    <h4 className="text-lg font-semibold text-foreground mb-3">
+                      Our Impact
+                    </h4>
+                    <ul className="space-y-2">
+                      {program.impact.map((item, itemIdx) => (
+                        <li
+                          key={itemIdx}
+                          className="flex items-center gap-3 text-muted-foreground"
+                        >
+                          <CheckCircle2 className="w-5 h-5 text-secondary flex-shrink-0" />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className="mb-8">
+                    <h4 className="text-lg font-semibold text-foreground mb-3">
+                      What We Provide
+                    </h4>
+                    <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                      {program.features.map((feature, featIdx) => (
+                        <li
+                          key={featIdx}
+                          className="flex items-center gap-2 text-sm text-muted-foreground"
+                        >
+                          <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                          {feature}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
                   <Link
-                    href="/get-involved"
-                    className="inline-flex items-center gap-2 bg-blue-700 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded-xl shadow transition-all text-sm"
+                    href="/donate"
+                    className="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-secondary hover:bg-secondary/90 text-secondary-foreground px-6 py-2.5 shadow-md hover:shadow-lg"
                   >
-                    Support This Program <ArrowRight className="w-4 h-4" />
+                    <Heart className="w-4 h-4 mr-2" />
+                    Support This Program
                   </Link>
                 </div>
               </div>
-
-              <div className={`rounded-2xl overflow-hidden shadow-xl border border-gray-200 ${index % 2 === 1 ? 'lg:order-1' : ''}`}>
-                <img src={program.image} alt={program.title} className="w-full h-[380px] object-cover" />
-              </div>
             </div>
-          ))}
-        </div>
-      </section>
+          </section>
+        );
+      })}
 
-      {/* CTA Expand Programs */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-8 text-center">
-        <div className="bg-gradient-to-r from-blue-900 via-blue-800 to-indigo-900 rounded-3xl p-10 text-white space-y-6 shadow-2xl border-4 border-amber-500">
-          <h2 className="text-3xl sm:text-4xl font-extrabold">Help Us Expand Our Programs</h2>
-          <p className="text-blue-100 text-base max-w-2xl mx-auto">
-            Every donation, sponsorship, or volunteer hour helps us reach one more child in Old Town Bamenda.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-2">
-            <Link
-              href="/donate"
-              className="bg-amber-500 hover:bg-amber-600 text-gray-900 font-bold px-8 py-3.5 rounded-xl shadow-xl transition-all inline-flex items-center justify-center gap-2"
-            >
-              Donate Now
-            </Link>
-            <Link
-              href="/get-involved"
-              className="bg-white hover:bg-gray-100 text-gray-900 font-bold px-8 py-3.5 rounded-xl shadow-lg transition-all inline-flex items-center justify-center gap-2"
-            >
-              Become a Volunteer
-            </Link>
-          </div>
-        </div>
-      </section>
+      {/* Call to Action */}
+      <CtaSection
+        title="Help Us Expand Our Programs"
+        description="Your support enables us to reach more children, train more volunteers, and create lasting change in our community."
+        primaryButtonText="Donate Now"
+        secondaryButtonText="Volunteer With Us"
+        secondaryButtonLink="/get-involved"
+      />
     </div>
   );
 }
