@@ -1,0 +1,96 @@
+name: Deploy Standalone Next.js to VPS
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    name: Build & Deploy Standalone to VPS
+    runs-on: ubuntu-latest
+
+    env:
+      VPS_HOST: ${{ secrets.VPS_HOST }}
+      VPS_USER: ${{ secrets.VPS_USER }}
+      VPS_PORT: ${{ secrets.VPS_PORT || '22' }}
+      VPS_TARGET_DIR: ${{ secrets.VPS_TARGET_DIR || '/var/www/ntambagbrothers' }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js 20
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Build Next.js Standalone
+        run: npm run build
+
+      - name: Prepare Standalone Deployment Package
+        run: |
+          echo "Packaging static assets and ecosystem config into standalone output..."
+          cp -r public .next/standalone/public
+          cp -r .next/static .next/standalone/.next/static
+          cp ecosystem.config.cjs .next/standalone/ecosystem.config.cjs
+
+      - name: Configure SSH Key
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.VPS_SSH_KEY }}
+
+      - name: Add VPS to Known Hosts
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -p ${{ env.VPS_PORT }} -H ${{ env.VPS_HOST }} >> ~/.ssh/known_hosts
+
+      - name: Ensure Target Directory Exists on VPS
+        run: |
+          ssh -p ${{ env.VPS_PORT }} ${{ env.VPS_USER }}@${{ env.VPS_HOST }} "mkdir -p ${{ env.VPS_TARGET_DIR }}/data ${{ env.VPS_TARGET_DIR }}/public/uploads"
+
+      - name: Seed Initial Data (Without Overwriting Live Modifications)
+        run: |
+          if [ -d "data" ]; then
+            rsync -avz --ignore-existing \
+              -e "ssh -p ${{ env.VPS_PORT }}" \
+              data/ ${{ env.VPS_USER }}@${{ env.VPS_HOST }}:${{ env.VPS_TARGET_DIR }}/data/
+          fi
+
+      - name: Sync Standalone Build to VPS via Rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -p ${{ env.VPS_PORT }}" \
+            --exclude 'data/content.json' \
+            --exclude 'public/uploads/' \
+            --exclude '.env*' \
+            .next/standalone/ ${{ env.VPS_USER }}@${{ env.VPS_HOST }}:${{ env.VPS_TARGET_DIR }}/
+
+      - name: Reload Next.js with PM2 on VPS
+        run: |
+          ssh -p ${{ env.VPS_PORT }} ${{ env.VPS_USER }}@${{ env.VPS_HOST }} << 'EOF'
+            # Load environment / NVM paths if applicable
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            export PATH=$PATH:/usr/local/bin:/usr/bin:$HOME/.npm-global/bin
+
+            cd ${{ env.VPS_TARGET_DIR }}
+
+            # Start or zero-downtime reload application with PM2
+            if pm2 describe ntambagbrothers > /dev/null 2>&1; then
+              echo "Reloading existing PM2 cluster..."
+              pm2 reload ecosystem.config.cjs --update-env
+            else
+              echo "Starting PM2 application for the first time..."
+              pm2 start ecosystem.config.cjs
+            fi
+
+            # Save PM2 process list to persist across VPS server reboots
+            pm2 save
+            echo "Deployment successfully reloaded with PM2!"
+          EOF
